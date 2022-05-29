@@ -32,7 +32,7 @@ declare module Text {
     fieldColor?: boolean;
     numberOfLines?: number;
     textAlign?: string;
-    style?: IStyle;
+    style?: any;
     children?: string;
     adjustsFontSizeToFit?: boolean;
   }

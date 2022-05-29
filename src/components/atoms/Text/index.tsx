@@ -22,7 +22,7 @@ const Poppins: {[key: number | string]: string} = {
   bold: 'Bold',
 };
 
-export default function Index(props: Text.IProps) {
+export default function Index(props: Text.IProps): JSX.Element {
   const {
     //props style
     header,
@@ -122,7 +122,6 @@ export default function Index(props: Text.IProps) {
         }`;
         break;
 
-        break;
       default:
         break;
     }

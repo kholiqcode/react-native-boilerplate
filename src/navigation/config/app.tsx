@@ -3,7 +3,7 @@ import {Home, Setting} from '../../screens';
 import {Animation} from '../../theme';
 import {tabBarIcon, BottomTabNavigator} from '../components';
 
-export const AppTabScreens: {[key: string]: Screen.RootObject} = {
+export const MainTabScreens: {[key: string]: Screen.RootObject} = {
   Home: {
     component: Home,
     options: {
@@ -22,13 +22,13 @@ export const AppTabScreens: {[key: string]: Screen.RootObject} = {
   },
 };
 
-const AppMenu = () => {
-  return <BottomTabNavigator tabScreens={AppTabScreens} />;
+const MainMenu = () => {
+  return <BottomTabNavigator tabScreens={MainTabScreens} />;
 };
 
 export default {
-  AppMenu: {
-    component: AppMenu,
+  MainMenu: {
+    component: MainMenu,
     options: {
       title: 'home',
       cardStyleInterpolator: Animation.bottomToUp,

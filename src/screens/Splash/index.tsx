@@ -5,11 +5,7 @@ import {useSplash} from './hook';
 import {styles} from './styles';
 
 export default function Splash(): JSX.Element {
-  const {startImageRotateFunction, rotateData} = useSplash();
-
-  useEffect(() => {
-    startImageRotateFunction();
-  }, []);
+  const {rotateData} = useSplash();
 
   return (
     <SafeAreaView style={styles.imageRotate}>

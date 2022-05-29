@@ -1,8 +1,11 @@
+import {useEffect} from 'react';
 import {Animated, Easing} from 'react-native';
 
 export const useSplash = () => {
+  //STATE
   let rotateValueHolder = new Animated.Value(0);
 
+  //HANDLER
   const startImageRotateFunction = () => {
     rotateValueHolder.setValue(0);
     Animated.timing(rotateValueHolder, {
@@ -17,6 +20,11 @@ export const useSplash = () => {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
   });
+
+  // REACT HOOKS
+  useEffect(() => {
+    startImageRotateFunction();
+  }, []);
 
   return {
     rotateData,

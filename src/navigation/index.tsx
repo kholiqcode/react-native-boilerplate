@@ -42,13 +42,12 @@ const MainScreens = () => {
  */
 const Navigator = () => {
   // HOOKS
-  const {theme, colors} = useTheme();
-  const font = useFont();
+  const {theme} = useTheme();
   const dispatch = useDispatch();
   const isDarkMode = useColorScheme() === 'dark';
   const {enableExperimental} = useLayout();
   const navigationRef: any = useRef(null);
-  const {intro, language} = useSelector((state: any) => state.application);
+  const {language} = useSelector((state: any) => state.application);
 
   // EFFECTS
   useEffect(() => {
@@ -61,9 +60,9 @@ const Navigator = () => {
 
   useEffect(() => {
     const onProcess = async () => {
-      setTimeout(() => {
-        navigationRef?.current?.dispatch(StackActions.replace('SignIn'));
-      }, 2000);
+      // setTimeout(() => {
+      navigationRef?.current?.dispatch(StackActions.replace('SignIn'));
+      // }, 2000);
       // Get current language of device
       const languageCode = language ?? BaseSetting.defaultLanguage;
       dispatch(onChangeLanguage(language));
@@ -80,7 +79,7 @@ const Navigator = () => {
   }, []);
 
   /**
-   * HANDLERS
+   * HANDLER
    */
 
   return (
@@ -88,7 +87,6 @@ const Navigator = () => {
       style={{
         flex: 1,
         position: 'relative',
-        backgroundColor: colors.background,
       }}>
       <NavigationContainer theme={theme} ref={navigationRef}>
         <RootStack.Navigator

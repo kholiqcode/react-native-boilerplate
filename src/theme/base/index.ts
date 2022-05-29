@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {boxShadow, margin, padding, scaleSize} from '../mixin';
+import { StyleSheet } from 'react-native';
+import { boxShadow, margin, padding } from '../mixin';
 
 /**
  * Common basic style defines
