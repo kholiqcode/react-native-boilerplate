@@ -1,4 +1,4 @@
-declare module ApplicationSlice {
+declare namespace ApplicationSlice {
   export interface IState {
     theme: string;
     font: string;

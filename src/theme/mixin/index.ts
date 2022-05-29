@@ -1,22 +1,20 @@
-import {Dimensions, PixelRatio, StyleSheetProperties} from 'react-native';
+import { Dimensions, PixelRatio, StyleSheetProperties } from 'react-native';
 
 const WINDOW_WIDTH: number = Dimensions.get('window').width;
-const guidelineBaseWidth: number = 375;
+const guidelineBaseWidth = 375;
 
-export const scaleSize = (size: number): number =>
-  (WINDOW_WIDTH / guidelineBaseWidth) * size;
+export const scaleSize = (size: number): number => (WINDOW_WIDTH / guidelineBaseWidth) * size;
 
-export const scaleFont = (size: number): number =>
-  size * PixelRatio.getFontScale();
+export const scaleFont = (size: number): number => size * PixelRatio.getFontScale();
 
 function dimensions(
-  top: number = 10,
+  top = 10,
   right = top,
   bottom = top,
   left = right,
-  property: string = 'padding',
-): {[key: string]: number} {
-  const styles: {[key: string]: number} = {};
+  property = 'padding',
+): { [key: string]: number } {
+  const styles: { [key: string]: number } = {};
 
   styles[`${property}Top`] = top;
   styles[`${property}Right`] = right;
@@ -27,31 +25,31 @@ function dimensions(
 }
 
 export function margin(
-  top: number = 0,
+  top = 0,
   right = top,
   bottom = top,
   left = right,
-): {[key: string]: number} {
+): { [key: string]: number } {
   return dimensions(top, right, bottom, left, 'margin');
 }
 
 export function padding(
-  top: number = 0,
+  top = 0,
   right = top,
   bottom = top,
   left = right,
-): {[key: string]: number} {
+): { [key: string]: number } {
   return dimensions(top, right, bottom, left, 'padding');
 }
 
 export function boxShadow(
   color: string,
-  offset: {height: number; width: number} = {height: 2, width: 2},
-  radius: number = 8,
-  opacity: number = 0.2,
+  offset: { height: number; width: number } = { height: 2, width: 2 },
+  radius = 8,
+  opacity = 0.2,
 ): {
   shadowColor: string;
-  shadowOffset: {height: number; width: number};
+  shadowOffset: { height: number; width: number };
   shadowOpacity: number;
   shadowRadius: number;
   elevation: number;

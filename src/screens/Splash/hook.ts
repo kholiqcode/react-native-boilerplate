@@ -1,11 +1,11 @@
-import {useEffect} from 'react';
-import {Animated, Easing} from 'react-native';
+import { useEffect } from 'react';
+import { Animated, Easing } from 'react-native';
 
 export const useSplash = () => {
-  //STATE
-  let rotateValueHolder = new Animated.Value(0);
+  // STATE
+  const rotateValueHolder = new Animated.Value(0);
 
-  //HANDLER
+  // HANDLER
   const startImageRotateFunction = () => {
     rotateValueHolder.setValue(0);
     Animated.timing(rotateValueHolder, {

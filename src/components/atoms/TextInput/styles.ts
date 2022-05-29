@@ -1,8 +1,8 @@
-import {I18nManager, StyleSheet} from 'react-native';
-import {useFont, useTheme} from '../../../theme';
+import { I18nManager, StyleSheet } from 'react-native';
+import { useFont, useTheme } from '../../../theme';
 
 const font = useFont();
-const {colors} = useTheme();
+const { colors } = useTheme();
 
 export const styles = StyleSheet.create({
   input: {

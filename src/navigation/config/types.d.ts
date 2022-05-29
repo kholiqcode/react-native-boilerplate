@@ -1,4 +1,4 @@
-declare module Screen {
+declare namespace Screen {
   export interface RootObject {
     component: any;
     options: IOptions;

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {BaseColor} from '../../../theme';
+import { StyleSheet } from 'react-native';
+import { BaseColor } from '../../../theme';
 
 export const styles = StyleSheet.create({
   iconNotyWrapper: {

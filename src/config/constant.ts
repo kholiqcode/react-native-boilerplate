@@ -1,6 +1,6 @@
 const activeConfig = 'production';
 
-declare module IConstant {
+declare namespace IConstant {
   export interface Url {
     api: string;
     assets: string;
@@ -48,5 +48,4 @@ const constants: IConstant.RootObject = {
   },
 };
 
-export const appConfig: IConstant.Production | IConstant.Dev =
-  constants[activeConfig];
+export const appConfig: IConstant.Production | IConstant.Dev = constants[activeConfig];

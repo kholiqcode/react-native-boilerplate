@@ -1,10 +1,10 @@
-import React, {forwardRef} from 'react';
-import {TextInput, View} from 'react-native';
-import {BaseColor, BaseStyle, useTheme} from '../../../theme';
-import {styles} from './styles';
+import React, { forwardRef } from 'react';
+import { TextInput, View } from 'react-native';
+import { BaseColor, BaseStyle, useTheme } from '../../../theme';
+import { styles } from './styles';
 
 const Index = forwardRef((props: TextInput.IProps, ref: any) => {
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const cardColor = colors.card;
   const {
     style,
@@ -22,7 +22,7 @@ const Index = forwardRef((props: TextInput.IProps, ref: any) => {
     inputStyle,
   } = props;
   return (
-    <View style={[BaseStyle.textInput, {backgroundColor: cardColor}, style]}>
+    <View style={[BaseStyle.textInput, { backgroundColor: cardColor }, style]}>
       <TextInput
         ref={ref}
         style={[styles.input, inputStyle]}

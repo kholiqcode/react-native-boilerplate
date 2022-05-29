@@ -1,6 +1,6 @@
-import {ModalSelectFont} from '../../screens/Modal';
+import { ModalSelectFont } from '../../screens/Modal';
 
-const ModalScreens: {[key: string]: Screen.RootObject} = {
+const ModalScreens: { [key: string]: Screen.RootObject } = {
   ModalSelectFont: {
     component: ModalSelectFont,
     options: {

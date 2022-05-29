@@ -1,4 +1,4 @@
-declare module Color {
+declare namespace Color {
   export type DefaultFont = string;
   export type FontSupport = string[];
 }

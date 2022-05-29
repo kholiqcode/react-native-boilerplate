@@ -1,6 +1,6 @@
-import {CardStyleInterpolators} from '@react-navigation/stack';
+import { CardStyleInterpolators } from '@react-navigation/stack';
 
-const forFade = ({current}: any) => ({
+const forFade = ({ current }: any) => ({
   cardStyle: {
     opacity: current.progress.interpolate({
       inputRange: [0, 0.5, 0.9, 1],
@@ -9,7 +9,7 @@ const forFade = ({current}: any) => ({
   },
 });
 
-const horizontal = ({current, layouts}: any) => ({
+const horizontal = ({ current, layouts }: any) => ({
   cardStyle: {
     transform: [
       {

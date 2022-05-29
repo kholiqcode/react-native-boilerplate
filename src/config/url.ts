@@ -1,4 +1,4 @@
-import {appConfig} from './constant';
+import { appConfig } from './constant';
 
 export const config = appConfig;
 

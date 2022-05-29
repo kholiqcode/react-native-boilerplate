@@ -1,7 +1,7 @@
 export const useSetting = () => {
-  //STATE
+  // STATE
 
-  //HANDLER
+  // HANDLER
 
   // REACT HOOKS
 

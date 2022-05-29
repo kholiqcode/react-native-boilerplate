@@ -1,4 +1,4 @@
-declare module Text {
+declare namespace Text {
   export interface IProps {
     header?: boolean;
     title1?: boolean;

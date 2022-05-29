@@ -1,4 +1,4 @@
-declare module User {
+declare namespace User {
   export interface IUser {
     id: number;
     name: string;

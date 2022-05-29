@@ -1,17 +1,17 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useTranslation} from 'react-i18next';
-import {BaseColor, BaseStyle, useTheme} from '../../../theme';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useTranslation } from 'react-i18next';
+import { BaseColor, BaseStyle, useTheme } from '../../../theme';
 
 const BottomTab: any = createBottomTabNavigator();
 
-export const BottomTabNavigator = ({
+export function BottomTabNavigator({
   tabScreens = {},
 }: {
-  tabScreens: {[key: string]: Tab.ITabScreens};
-}): JSX.Element => {
-  const {t} = useTranslation();
-  const {colors} = useTheme();
+  tabScreens: { [key: string]: Tab.ITabScreens };
+}): JSX.Element {
+  const { t } = useTranslation();
+  const { colors } = useTheme();
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -24,9 +24,10 @@ export const BottomTabNavigator = ({
         labelStyle: {
           fontSize: 12,
         },
-      }}>
+      }}
+    >
       {Object.keys(tabScreens).map((name, index) => {
-        const {options, component} = tabScreens[name];
+        const { options, component } = tabScreens[name];
         return (
           <BottomTab.Screen
             key={index}
@@ -42,4 +43,4 @@ export const BottomTabNavigator = ({
       })}
     </BottomTab.Navigator>
   );
-};
+}

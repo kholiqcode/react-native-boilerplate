@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {scaleFont} from '../mixin';
+import { StyleSheet } from 'react-native';
+import { scaleFont } from '../mixin';
 
 /**
  * Fontweight setting
@@ -23,9 +23,7 @@ export const FontWeight: Typography.IFontWeight = {
  * - This font weight will be used for all template
  * - Check more how to use typography in url below
  */
-export const Typography = StyleSheet.create<
-  StyleSheet.NamedStyles<Typography.RootObject>
->({
+export const Typography = StyleSheet.create<StyleSheet.NamedStyles<Typography.RootObject>>({
   header: {
     fontSize: scaleFont(34),
     fontWeight: FontWeight.bold,

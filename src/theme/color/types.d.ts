@@ -1,4 +1,4 @@
-declare module Color {
+declare namespace Color {
   export interface IBaseColor {
     grayColor: string;
     dividerColor: string;

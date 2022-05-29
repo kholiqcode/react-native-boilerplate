@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {BaseColor, FontWeight, Typography} from '../../../theme';
+import { StyleSheet } from 'react-native';
+import { BaseColor, FontWeight, Typography } from '../../../theme';
 
 export default StyleSheet.create({
   default: {

@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {Text} from '../../../components';
-import {styles} from './styles';
+import { Text } from '../../../components';
+import { styles } from './styles';
 
 interface ITabIconProps {
   color: string;
@@ -15,17 +15,13 @@ interface ITabIconNotyProps {
   count: number;
 }
 
-export const tabBarIcon = ({color, name}: ITabIconProps): JSX.Element => (
+export const tabBarIcon = ({ color, name }: ITabIconProps): JSX.Element => (
   <Icon name={name} size={20} color={color} solid />
 );
 
-export const tabBarIconHaveNoty = ({
-  color,
-  name,
-  count = 0,
-}: ITabIconNotyProps): JSX.Element => (
+export const tabBarIconHaveNoty = ({ color, name, count = 0 }: ITabIconNotyProps): JSX.Element => (
   <View>
-    {tabBarIcon({color, name})}
+    {tabBarIcon({ color, name })}
     {count > 0 && (
       <View style={styles.iconNotyWrapper}>
         <Text whiteColor caption2>

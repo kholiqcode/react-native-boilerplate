@@ -1,9 +1,9 @@
-import {useNavigation} from '@react-navigation/native';
-import {useState} from 'react';
-import {Platform} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { Platform } from 'react-native';
 
 export const useSignIn = () => {
-  //STATE
+  // STATE
   const [hidePassword, setHidePassword] = useState<boolean>(true);
   const navigation = useNavigation<SignIn.MainMenuScreenProp>();
   const offsetKeyboard = Platform.select({
@@ -11,7 +11,7 @@ export const useSignIn = () => {
     android: 30,
   });
 
-  //HANDLER
+  // HANDLER
   const onToggleHidePassword = () => {
     setHidePassword(!hidePassword);
   };
@@ -20,5 +20,5 @@ export const useSignIn = () => {
 
   // REACT HOOKS
 
-  return {hidePassword, offsetKeyboard, onToggleHidePassword, goToHome};
+  return { hidePassword, offsetKeyboard, onToggleHidePassword, goToHome };
 };

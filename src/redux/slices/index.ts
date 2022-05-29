@@ -1,9 +1,9 @@
-//IMPORT REDUCER
+// IMPORT REDUCER
 import userReducer from './user';
 import applicationReducer from './application';
 
-export {userReducer, applicationReducer};
+export { userReducer, applicationReducer };
 
-//IMPORT ACTION
+// IMPORT ACTION
 export * from './application';
 export * from './user';

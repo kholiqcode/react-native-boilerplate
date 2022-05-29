@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-const Image: React.FC<Image.IProps> = props => {
-  const {style, resizeMode, source, ...rest} = props;
+const Image: React.FC<Image.IProps> = (props) => {
+  const { style, resizeMode, source, ...rest } = props;
   const getMode: any = () => {
     let resize: string = FastImage.resizeMode.cover;
     switch (resizeMode) {

@@ -1,4 +1,4 @@
-declare module InitialState {
+declare namespace InitialState {
   export interface IState {
     isLoading?: boolean;
     isAuthenticated: boolean;

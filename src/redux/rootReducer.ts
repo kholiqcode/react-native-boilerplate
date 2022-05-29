@@ -1,12 +1,12 @@
 // ----------------------------------------------------------------------
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import persistReducer from 'redux-persist/es/persistReducer';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 // ----------------------------------------------------------------------
-import {applicationReducer, userReducer} from './slices';
+import { applicationReducer, userReducer } from './slices';
 
 const rootPersistConfig = {
   key: 'root',
@@ -28,4 +28,4 @@ const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
 });
 
-export {rootPersistConfig, rootReducer};
+export { rootPersistConfig, rootReducer };

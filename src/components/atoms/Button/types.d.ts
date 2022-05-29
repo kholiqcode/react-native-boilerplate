@@ -1,4 +1,4 @@
-declare module Button {
+declare namespace Button {
   interface IProps {
     style?: any;
     icon?: any;

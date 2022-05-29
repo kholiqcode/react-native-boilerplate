@@ -1,14 +1,8 @@
-import {
-  BaseColor,
-  FontWeight,
-  Typography,
-  useFont,
-  useTheme,
-} from '../../../theme';
 import React from 'react';
-import {StyleSheet, Text, TextStyle} from 'react-native';
+import { StyleSheet, Text, TextStyle } from 'react-native';
+import { BaseColor, FontWeight, Typography, useFont, useTheme } from '../../../theme';
 
-const Poppins: {[key: number | string]: string} = {
+const Poppins: { [key: number | string]: string } = {
   100: 'Thin',
   200: 'ExtraLight',
   300: 'Light',
@@ -24,7 +18,7 @@ const Poppins: {[key: number | string]: string} = {
 
 export default function Index(props: Text.IProps): JSX.Element {
   const {
-    //props style
+    // props style
     header,
     title1,
     title2,
@@ -48,7 +42,7 @@ export default function Index(props: Text.IProps): JSX.Element {
     bold,
     heavy,
     black,
-    //custom color
+    // custom color
     primaryColor,
     darkPrimaryColor,
     lightPrimaryColor,
@@ -57,21 +51,21 @@ export default function Index(props: Text.IProps): JSX.Element {
     dividerColor,
     whiteColor,
     fieldColor,
-    //numberOfLines
+    // numberOfLines
     numberOfLines,
     textAlign,
-    //custom
+    // custom
     style,
-    //children
+    // children
     children,
-    //adjust fontsize
+    // adjust fontsize
     adjustsFontSizeToFit,
   } = props;
 
-  const {colors} = useTheme();
+  const { colors } = useTheme();
   const font = useFont();
 
-  let textStyle: TextStyle = StyleSheet.flatten([
+  const textStyle: TextStyle = StyleSheet.flatten([
     header && Typography.header,
     title1 && Typography.title1,
     title2 && Typography.title2,
@@ -85,28 +79,28 @@ export default function Index(props: Text.IProps): JSX.Element {
     caption1 && Typography.caption1,
     caption2 && Typography.caption2,
     overline && Typography.overline,
-    //custom for font
-    thin && {fontWeight: FontWeight.thin},
-    ultraLight && {fontWeight: FontWeight.ultraLight},
-    light && {fontWeight: FontWeight.light},
-    regular && {fontWeight: FontWeight.regular},
-    medium && {fontWeight: FontWeight.medium},
-    semibold && {fontWeight: FontWeight.semibold},
-    bold && {fontWeight: FontWeight.bold},
-    heavy && {fontWeight: FontWeight.heavy},
-    black && {fontWeight: FontWeight.black},
+    // custom for font
+    thin && { fontWeight: FontWeight.thin },
+    ultraLight && { fontWeight: FontWeight.ultraLight },
+    light && { fontWeight: FontWeight.light },
+    regular && { fontWeight: FontWeight.regular },
+    medium && { fontWeight: FontWeight.medium },
+    semibold && { fontWeight: FontWeight.semibold },
+    bold && { fontWeight: FontWeight.bold },
+    heavy && { fontWeight: FontWeight.heavy },
+    black && { fontWeight: FontWeight.black },
     // default color
-    {color: colors.text},
-    //custom for color
-    primaryColor && {color: colors.primary},
-    darkPrimaryColor && {color: colors.primaryDark},
-    lightPrimaryColor && {color: colors.primaryLight},
-    accentColor && {color: colors.accent},
-    grayColor && {color: BaseColor.grayColor},
-    dividerColor && {color: BaseColor.dividerColor},
-    whiteColor && {color: BaseColor.whiteColor},
-    fieldColor && {color: BaseColor.fieldColor},
-    {fontFamily: font, textAlign},
+    { color: colors.text },
+    // custom for color
+    primaryColor && { color: colors.primary },
+    darkPrimaryColor && { color: colors.primaryDark },
+    lightPrimaryColor && { color: colors.primaryLight },
+    accentColor && { color: colors.accent },
+    grayColor && { color: BaseColor.grayColor },
+    dividerColor && { color: BaseColor.dividerColor },
+    whiteColor && { color: BaseColor.whiteColor },
+    fieldColor && { color: BaseColor.fieldColor },
+    { fontFamily: font, textAlign },
     style && style,
   ]);
 
@@ -116,9 +110,7 @@ export default function Index(props: Text.IProps): JSX.Element {
     switch (textStyle.fontFamily) {
       case 'Poppins':
         textStyle.fontFamily = `${textStyle.fontFamily}-${
-          Poppins[fontWeight] == 'Regular'
-            ? Poppins[fontWeight]
-            : Poppins[fontWeight] + fontStyle
+          Poppins[fontWeight] == 'Regular' ? Poppins[fontWeight] : Poppins[fontWeight] + fontStyle
         }`;
         break;
 
@@ -131,7 +123,8 @@ export default function Index(props: Text.IProps): JSX.Element {
     <Text
       style={textStyle}
       adjustsFontSizeToFit={adjustsFontSizeToFit}
-      numberOfLines={numberOfLines}>
+      numberOfLines={numberOfLines}
+    >
       {children}
     </Text>
   );

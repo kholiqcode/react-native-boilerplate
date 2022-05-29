@@ -1,7 +1,7 @@
 /**
  * IMPORTS
  */
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 /**
  * SLICE USER
@@ -56,7 +56,7 @@ const slice = createSlice({
 // Reducer
 export default slice.reducer;
 
-//Actions
-export const {startLoading, hasError, onGetUsersSuccess} = slice.actions;
+// Actions
+export const { startLoading, hasError, onGetUsersSuccess } = slice.actions;
 
 // ----------------------------------------------------------------------

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {BaseColor} from '../../theme';
+import { StyleSheet } from 'react-native';
+import { BaseColor } from '../../theme';
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,5 +12,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 50,
   },
-  textInput: {marginBottom: 10},
+  textInput: { marginBottom: 10 },
 });

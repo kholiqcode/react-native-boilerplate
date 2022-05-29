@@ -1,4 +1,4 @@
-declare module Theme {
+declare namespace Theme {
   export interface IColors {
     primary: string;
     primaryDark: string;

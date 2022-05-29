@@ -1,7 +1,7 @@
 export const useHome = () => {
-  //STATE
+  // STATE
 
-  //HANDLER
+  // HANDLER
 
   // REACT HOOKS
 

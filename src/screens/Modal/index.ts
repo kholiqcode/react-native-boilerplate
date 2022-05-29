@@ -1,3 +1,3 @@
 import ModalSelectFont from './ModalSelectFont';
 
-export {ModalSelectFont};
+export { ModalSelectFont };

@@ -1,4 +1,4 @@
-declare module Icon {
+declare namespace Icon {
   interface IProps {
     style?: any;
     name: string;

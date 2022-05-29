@@ -1,18 +1,12 @@
 import axios from 'axios';
-import {useRequest} from '../hooks';
+import { useRequest } from '../hooks';
 
-const {
-  createHeader,
-  createUrlParamFromObj,
-  getContentType,
-  getCustomUrl,
-  getPath,
-} = useRequest();
+const { createHeader, createUrlParamFromObj, getContentType, getCustomUrl, getPath } = useRequest();
 
 export const apiInstance = axios.create({
   baseURL: '',
   timeout: 60000,
-  validateStatus: status => status >= 200 && status < 300,
+  validateStatus: (status) => status >= 200 && status < 300,
   maxBodyLength: Infinity,
 });
 
@@ -22,19 +16,19 @@ class ApiRequest {
     const params = createUrlParamFromObj(payload.params);
     const customUrl = getCustomUrl(payload.url);
     const contentType = getContentType(payload.type);
-    const baseHeaders = {'Content-Type': contentType};
+    const baseHeaders = { 'Content-Type': contentType };
     const headers = createHeader(payload.headers, baseHeaders);
     const url = customUrl.length > 0 ? customUrl : route + path + params;
     const data = payload.body ? payload.body : {};
-    const requestObj: any = {url, headers, method, data};
+    const requestObj: any = { url, headers, method, data };
 
     try {
       const response = await apiInstance.request(requestObj);
       const responseData = response.data;
       if (responseData) {
-        return {axiosResponse: response, ...responseData};
+        return { axiosResponse: response, ...responseData };
       }
-      return {axiosResponse: response, ...response};
+      return { axiosResponse: response, ...response };
     } catch (err: any) {
       if (err && err.response && err.response.data) {
         throw err.response.data;

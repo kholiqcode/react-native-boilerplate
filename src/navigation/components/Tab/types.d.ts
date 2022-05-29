@@ -1,4 +1,4 @@
-declare module Tab {
+declare namespace Tab {
   export interface ILabelStyle {
     fontSize: number;
   }

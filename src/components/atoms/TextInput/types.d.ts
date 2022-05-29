@@ -1,4 +1,4 @@
-declare module TextInput {
+declare namespace TextInput {
   export interface IProps {
     style?: any;
     onChangeText?: any;

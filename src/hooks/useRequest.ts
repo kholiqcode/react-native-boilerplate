@@ -4,13 +4,13 @@ export default function useRequest() {
   const createUrlParamFromObj = (params = null): string => {
     if (!params) return '';
     const result: string[] = [];
-    Object.keys(params).map(key => result.push(`${key}=${params[key]}`));
+    Object.keys(params).map((key) => result.push(`${key}=${params[key]}`));
     return `?${result.join('&')}`;
   };
 
   const getCustomUrl = (url = ''): string => url;
 
-  const getContentType = (type: string = ''): string => {
+  const getContentType = (type = ''): string => {
     switch (type) {
       case 'form-data':
         return 'multipart/form-data';

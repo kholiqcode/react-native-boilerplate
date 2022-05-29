@@ -1,10 +1,4 @@
-import {
-  Dimensions,
-  I18nManager,
-  LayoutAnimation,
-  Platform,
-  UIManager,
-} from 'react-native';
+import { Dimensions, I18nManager, LayoutAnimation, Platform, UIManager } from 'react-native';
 import RNRestart from 'react-native-restart';
 
 /**
@@ -12,7 +6,7 @@ import RNRestart from 'react-native-restart';
  * @returns Object
  */
 export default function useLayout() {
-  const TRANSPARENCIES: {[key: number]: string} = {
+  const TRANSPARENCIES: { [key: number]: string } = {
     100: 'FF',
     99: 'FC',
     98: 'FA',
@@ -116,8 +110,8 @@ export default function useLayout() {
     0: '00',
   };
   const heightHeader = (): number => {
-    const width: number = Dimensions.get('window').width;
-    const height: number = Dimensions.get('window').height;
+    const { width } = Dimensions.get('window');
+    const { height } = Dimensions.get('window');
     const landscape = width > height;
 
     if (Platform.OS === 'android') return 45;
@@ -134,7 +128,7 @@ export default function useLayout() {
   };
 
   const heightTabView = (): number => {
-    const height: number = Dimensions.get('window').height;
+    const { height } = Dimensions.get('window');
     let size = height - heightHeader();
     switch (height) {
       case 375:
@@ -158,10 +152,7 @@ export default function useLayout() {
     return Dimensions.get('window').height;
   };
 
-  const scrollEnabled = (
-    contentWidth: number,
-    contentHeight: number,
-  ): boolean => {
+  const scrollEnabled = (contentWidth: number, contentHeight: number): boolean => {
     return contentHeight > Dimensions.get('window').height - heightHeader();
   };
 
@@ -184,10 +175,7 @@ export default function useLayout() {
     }
   };
 
-  const parseHexTransparency = (
-    hexColor: string = '#ffffff',
-    transparency: number = 0,
-  ) => {
+  const parseHexTransparency = (hexColor = '#ffffff', transparency = 0) => {
     return `${hexColor}${TRANSPARENCIES?.[transparency] ?? '00'}`;
   };
 

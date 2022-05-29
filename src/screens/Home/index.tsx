@@ -1,18 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Text} from '../../components';
-import {useGetUsers} from '../../services';
+import { View } from 'react-native';
+import { Text } from '../../components';
+import { useGetUsers } from '../../services';
 
 export default function Home(): JSX.Element {
-  const {data, isLoading, error} = useGetUsers();
+  const { data, isLoading, error } = useGetUsers();
   return (
     <View>
       <Text>Home</Text>
       {!isLoading &&
         data?.users?.length > 0 &&
-        data?.users?.map((v: any) => (
-          <Text key={v?.firstName}>{v.firstName}</Text>
-        ))}
+        data?.users?.map((v: any) => <Text key={v?.firstName}>{v.firstName}</Text>)}
     </View>
   );
 }

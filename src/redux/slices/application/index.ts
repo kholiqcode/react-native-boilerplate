@@ -1,7 +1,7 @@
 /**
  * IMPORTS
  */
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 /**
  * SLICE USER
@@ -24,34 +24,22 @@ const slice = createSlice({
     },
 
     // ON CHANGE THEME
-    onChangeTheme(
-      state: ApplicationSlice.IState,
-      action: ApplicationSlice.IAction,
-    ) {
+    onChangeTheme(state: ApplicationSlice.IState, action: ApplicationSlice.IAction) {
       state.theme = action?.payload;
     },
 
     // ON FORCE THEME
-    onForceTheme(
-      state: ApplicationSlice.IState,
-      action: ApplicationSlice.IAction,
-    ) {
+    onForceTheme(state: ApplicationSlice.IState, action: ApplicationSlice.IAction) {
       state.force_dark = action?.payload;
     },
 
     // ON CHANGE FONT
-    onChangeFont(
-      state: ApplicationSlice.IState,
-      action: ApplicationSlice.IAction,
-    ) {
+    onChangeFont(state: ApplicationSlice.IState, action: ApplicationSlice.IAction) {
       state.font = action?.payload;
     },
 
     // ON CHANGE LANGUAGE
-    onChangeLanguage(
-      state: ApplicationSlice.IState,
-      action: ApplicationSlice.IAction,
-    ) {
+    onChangeLanguage(state: ApplicationSlice.IState, action: ApplicationSlice.IAction) {
       state.language = action?.payload;
     },
   },
@@ -61,11 +49,6 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-export const {
-  setIntro,
-  onChangeTheme,
-  onForceTheme,
-  onChangeFont,
-  onChangeLanguage,
-} = slice.actions;
+export const { setIntro, onChangeTheme, onForceTheme, onChangeFont, onChangeLanguage } =
+  slice.actions;
 // ----------------------------------------------------------------------

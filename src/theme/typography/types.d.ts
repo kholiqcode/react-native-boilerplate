@@ -1,4 +1,4 @@
-declare module Typography {
+declare namespace Typography {
   type TFont =
     | '100'
     | '200'

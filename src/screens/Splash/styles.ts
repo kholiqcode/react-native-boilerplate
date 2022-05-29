@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {BaseStyle} from '../../theme';
+import { StyleSheet } from 'react-native';
+import { BaseStyle } from '../../theme';
 
 export const styles = StyleSheet.create<Splash.IStyleSheet>({
   imageRotate: [

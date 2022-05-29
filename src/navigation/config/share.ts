@@ -1,7 +1,7 @@
-import {SignIn, Splash} from '../../screens';
-import {Animation} from '../../theme';
+import { SignIn, Splash } from '../../screens';
+import { Animation } from '../../theme';
 
-const ShareScreens: {[key: string]: Screen.RootObject} = {
+const ShareScreens: { [key: string]: Screen.RootObject } = {
   Splash: {
     component: Splash,
     options: {

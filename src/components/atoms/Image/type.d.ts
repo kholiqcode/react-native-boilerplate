@@ -1,4 +1,4 @@
-declare module Image {
+declare namespace Image {
   export interface IProps {
     readonly style?: Object | Array;
     readonly resizeMode?: 'stretch' | 'contain' | 'center';
