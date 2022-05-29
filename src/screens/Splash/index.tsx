@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Animated, SafeAreaView } from 'react-native';
 import { Logo } from '../../assets';
 import { useSplash } from './hook';

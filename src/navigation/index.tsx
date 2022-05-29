@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BaseSetting } from '../config';
 import { useLayout } from '../hooks';
 import { onChangeLanguage } from '../redux';
-import { useFont, useTheme } from '../theme';
+import { useTheme } from '../theme';
 import { AllScreens, ModalScreens } from './config';
 
 const RootStack = createStackNavigator();
@@ -53,10 +53,11 @@ function Navigator() {
   }, [isDarkMode]);
 
   useEffect(() => {
+    // Startup Process
     const onProcess = async () => {
-      // setTimeout(() => {
-      navigationRef?.current?.dispatch(StackActions.replace('SignIn'));
-      // }, 2000);
+      setTimeout(() => {
+        navigationRef?.current?.dispatch(StackActions.replace('SignIn'));
+      }, 2000);
       // Get current language of device
       const languageCode = language ?? BaseSetting.defaultLanguage;
       dispatch(onChangeLanguage(language));
