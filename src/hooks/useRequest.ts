@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 export default function useRequest() {
   const getPath = (path = ''): string => (path ? `/${path}` : '');
 
   const createUrlParamFromObj = (params = null): string => {
-    if (!params) return '';
+    if (!params) {
+      return '';
+    }
     const result: string[] = [];
     Object.keys(params).map((key) => result.push(`${key}=${params[key]}`));
     return `?${result.join('&')}`;
@@ -19,7 +23,7 @@ export default function useRequest() {
     }
   };
 
-  const createHeader = (value: any = {}, base: any = {}) => ({
+  const createHeader = (value = {}, base = {}) => ({
     ...base,
     ...value,
   });

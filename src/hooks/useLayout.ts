@@ -114,8 +114,12 @@ export default function useLayout() {
     const { height } = Dimensions.get('window');
     const landscape = width > height;
 
-    if (Platform.OS === 'android') return 45;
-    if (Platform.isTV) return 65;
+    if (Platform.OS === 'android') {
+      return 45;
+    }
+    if (Platform.isTV) {
+      return 65;
+    }
     switch (height) {
       case 375:
       case 414:

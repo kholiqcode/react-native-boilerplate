@@ -1,7 +1,7 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { onlineManager } from 'react-query';
-import { Platform } from 'react-native';
 
 export default function useOnlineManager() {
   React.useEffect(() => {

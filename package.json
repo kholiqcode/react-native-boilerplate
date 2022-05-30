@@ -6,13 +6,17 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --verbose --coverage",
+    "test:update": "jest --verbose --coverage --updateSnapshot",
+    "test:watch": "jest --verbose --watch",
+    "coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html",
     "lint": "eslint --ext .tsx --ext .ts src/",
     "lint:fix": "eslint --ext .tsx --ext .ts src/ --fix",
     "format": "prettier --check ./src",
     "format:fix": "prettier --write ./src"
   },
   "dependencies": {
+    "@jest/globals": "^28.1.0",
     "@react-native-async-storage/async-storage": "^1.17.5",
     "@react-native-community/netinfo": "^8.3.0",
     "@react-native-masked-view/masked-view": "^0.2.6",
@@ -20,8 +24,10 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/stack": "^6.2.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "@testing-library/react-native": "^9.1.0",
     "axios": "^0.27.2",
     "i18next": "^21.8.4",
+    "promise-polyfill": "^8.2.3",
     "react": "17.0.2",
     "react-i18next": "^11.16.9",
     "react-native": "0.68.2",
@@ -41,48 +47,37 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
     "@babel/runtime": "^7.12.5",
+    "@jest/types": "^28.1.0",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^26.0.24",
     "@types/react-native": "^0.67.3",
     "@types/react-native-vector-icons": "^6.4.10",
     "@types/react-test-renderer": "^17.0.1",
     "@types/redux-logger": "^3.0.9",
+    "@types/redux-persist": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^27.0.0",
     "eslint": "^8.16.0",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-jest-dom": "^4.0.2",
     "husky": "^8.0.1",
-    "jest": "^26.6.3",
+    "jest": "^27.0.0",
     "lint-staged": "^12.4.2",
     "metro-react-native-babel-preset": "^0.67.0",
     "prettier": "^2.6.2",
     "react-native-svg-transformer": "^1.0.0",
-    "react-test-renderer": "17.0.2",
-    "typescript": "^4.4.4"
+    "react-test-renderer": "^18.1.0",
+    "ts-jest": "^28.0.3",
+    "typescript": "^4.7.2"
   },
   "resolutions": {
     "@types/react": "^17"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "moduleNameMapper": {
-      "\\.svg": "<rootDir>/__mocks__/svgMock.js"
-    }
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -94,7 +89,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn test"
+      "pre-commit": "lint-staged && yarn test",
+      "pre-push": "yarn verify"
     }
+  },
+  "engines": {
+    "node": ">=14",
+    "yarn": ">= 1.22",
+    "npm": "Please use Yarn"
   }
 }

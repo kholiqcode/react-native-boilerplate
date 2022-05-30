@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 

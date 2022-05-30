@@ -8,13 +8,13 @@ declare namespace TextInput {
     success?: boolean;
     secureTextEntry?: boolean;
     keyboardType?:
-      | 'default'
-      | 'email-address'
-      | 'number-pad'
-      | 'decimal-pad'
-      | 'numeric'
-      | 'phone-pad'
-      | 'url';
+    | 'default'
+    | 'email-address'
+    | 'number-pad'
+    | 'decimal-pad'
+    | 'numeric'
+    | 'phone-pad'
+    | 'url';
     multiline?: boolean;
     textAlignVertical?: any;
     icon?: any;

@@ -22,7 +22,7 @@ function MainScreens() {
         headerShown: false,
       }}
     >
-      {Object.keys(AllScreens).map((name, index) => {
+      {Object.keys(AllScreens).map((name) => {
         const { component, options } = AllScreens[name];
         return <MainStack.Screen key={name} name={name} component={component} options={options} />;
       })}

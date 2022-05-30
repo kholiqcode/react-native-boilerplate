@@ -4,7 +4,7 @@ import { Text } from '../../components';
 import { useGetUsers } from '../../services';
 
 export default function Home(): JSX.Element {
-  const { data, isLoading, error } = useGetUsers();
+  const { data, isLoading } = useGetUsers();
   return (
     <View>
       <Text>Home</Text>

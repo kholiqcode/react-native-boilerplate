@@ -28,16 +28,20 @@ export const fetcher = <T>({
 
 export const useLoadMore = <T>(url: string | null, params?: object) => {
   const context = useInfiniteQuery<
-    GetInfinitePagesInterface<T>,
-    Error,
-    GetInfinitePagesInterface<T>,
-    QueryKeyT
-  >([url!, params], ({ queryKey, pageParam = 1, meta }) => fetcher({ queryKey, pageParam, meta }), {
-    getPreviousPageParam: (firstPage) => firstPage.previousId ?? false,
-    getNextPageParam: (lastPage) => {
-      return lastPage.nextId ?? false;
+  GetInfinitePagesInterface<T>,
+  Error,
+  GetInfinitePagesInterface<T>,
+  QueryKeyT
+  >(
+    [url!, params],
+    ({ queryKey, pageParam = 1, meta }: any) => fetcher({ queryKey, pageParam, meta }),
+    {
+      getPreviousPageParam: (firstPage: any) => firstPage.previousId ?? false,
+      getNextPageParam: (lastPage: any) => {
+        return lastPage.nextId ?? false;
+      },
     },
-  });
+  );
 
   return context;
 };
@@ -50,7 +54,7 @@ export const usePrefetch = <T>(url: string | null, params?: object) => {
       return;
     }
 
-    queryClient.prefetchQuery<T, Error, T, QueryKeyT>([url, params], ({ queryKey, meta }) =>
+    queryClient.prefetchQuery<T, Error, T, QueryKeyT>([url, params], ({ queryKey, meta }: any) =>
       fetcher({ queryKey, meta }),
     );
   };
@@ -82,18 +86,18 @@ const useGenericMutation = <T, S>(
   const queryClient = useQueryClient();
 
   return useMutation<AxiosResponse, AxiosError, T | S>(func, {
-    onMutate: async (data) => {
+    onMutate: async (data: any) => {
       await queryClient.cancelQueries([url, params]);
 
       const previousData = queryClient.getQueryData([url, params]);
 
-      queryClient.setQueryData<T>([url, params], (oldData) => {
-        return updater ? updater(oldData!, data as S) : (data as T);
+      queryClient.setQueryData<T>([url, params], (oldData: any) => {
+        return updater ? updater(oldData, data as S) : (data as T);
       });
 
       return previousData;
     },
-    onError: (err, _, context) => {
+    onError: (err: any, _: any, context: any) => {
       queryClient.setQueryData([url, params], context);
     },
     onSettled: () => {

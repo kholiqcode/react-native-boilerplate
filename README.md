@@ -4,11 +4,6 @@ A well-structured React Native Boilerplate with Typescript, Redux, Jest support 
 
 <br/>
 
-<br/>
-<div align="center">
-  <sub>Created by <a href="https://github.com/kholiqcode">Kholiq</a></sub>
-</div>
-
 ## About
 
 React Native lets you build mobile apps using JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components.
@@ -290,7 +285,3 @@ yarn lint:fix
 └── yarn.lock
 
 ```
-
-## License
-
-Licensed under the MIT License, Copyright © 2021-present Kholiq

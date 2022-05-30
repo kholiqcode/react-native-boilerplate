@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio, StyleSheetProperties } from 'react-native';
+import { Dimensions, PixelRatio } from 'react-native';
 
 const WINDOW_WIDTH: number = Dimensions.get('window').width;
 const guidelineBaseWidth = 375;
@@ -48,12 +48,12 @@ export function boxShadow(
   radius = 8,
   opacity = 0.2,
 ): {
-  shadowColor: string;
-  shadowOffset: { height: number; width: number };
-  shadowOpacity: number;
-  shadowRadius: number;
-  elevation: number;
-} {
+    shadowColor: string;
+    shadowOffset: { height: number; width: number };
+    shadowOpacity: number;
+    shadowRadius: number;
+    elevation: number;
+  } {
   return {
     shadowColor: color,
     shadowOffset: offset,

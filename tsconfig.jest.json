@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "jsx": "react",
+    "types": ["reflect-metadata", "jest"]
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "rootDir": "."
+    }
+  },
+  "include": ["src/**/*", "**/*.spec.ts", "**/*.test.ts"]
+}
