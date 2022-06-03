@@ -1,8 +1,14 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage, { FastImageProps } from 'react-native-fast-image';
 
-const Image: React.FC<Image.IProps> = (props) => {
+export interface IImageProps {
+  style?: Object | Array<any>;
+  resizeMode?: FastImageProps['resizeMode'];
+  source: FastImageProps['source'];
+}
+
+const Image = (props: IImageProps) => {
   const { style, resizeMode, source, ...rest } = props;
   const getMode: any = () => {
     let resize: string = FastImage.resizeMode.cover;

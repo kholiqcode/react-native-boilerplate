@@ -1,4 +1,4 @@
-package com.boilerplate;
+package com.finetiks.rnboilerplate;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

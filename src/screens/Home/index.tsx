@@ -8,9 +8,12 @@ export default function Home(): JSX.Element {
   return (
     <View>
       <Text>Home</Text>
-      {!isLoading &&
+      {isLoading ? (
+        <Text>Loading</Text>
+      ) : (
         data?.users?.length > 0 &&
-        data?.users?.map((v: any) => <Text key={v?.firstName}>{v.firstName}</Text>)}
+        data?.users?.map((v: any) => <Text key={v?.firstName}>{v.firstName}</Text>)
+      )}
     </View>
   );
 }

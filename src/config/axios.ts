@@ -40,19 +40,17 @@ class ApiRequest {
     }
   };
 
-  static get = (route: string, payload?: Object | Array<any>) =>
-    ApiRequest.request('GET', route, payload);
+  static get = (route: string, payload?: Object | any) => ApiRequest.request('GET', route, payload);
 
-  static put = (route: string, payload?: Object | Array<any>) =>
-    ApiRequest.request('PUT', route, payload);
+  static put = (route: string, payload?: Object | any) => ApiRequest.request('PUT', route, payload);
 
-  static post = (route: string, payload?: Object | Array<any>) =>
+  static post = (route: string, payload?: Object | any) =>
     ApiRequest.request('POST', route, payload);
 
-  static delete = (route: string, payload?: Object | Array<any>) =>
+  static delete = (route: string, payload?: Object | any) =>
     ApiRequest.request('DELETE', route, payload);
 
-  static patch = (route: string, payload?: Object | Array<any>) =>
+  static patch = (route: string, payload?: Object | any) =>
     ApiRequest.request('PATCH', route, payload);
 }
 

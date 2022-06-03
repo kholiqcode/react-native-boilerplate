@@ -1,10 +1,25 @@
 import React from 'react';
-import { ActivityIndicator, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from 'react-native';
 import { BaseColor, useTheme } from '../../../theme';
 import Text from '../Text';
 import styles from './styles';
 
-export default function Button(props: Button.IProps) {
+interface IButtonProps extends TouchableOpacityProps {
+  icon?: any;
+  outline?: boolean;
+  full?: boolean;
+  round?: boolean;
+  loading?: boolean;
+  styleText?: any;
+  children?: any;
+}
+
+export default function Button(props: IButtonProps) {
   const { colors } = useTheme();
   const { style, styleText, icon, outline, full, round, loading, children, onPress, ...rest } =
     props;

@@ -48,12 +48,12 @@ export function boxShadow(
   radius = 8,
   opacity = 0.2,
 ): {
-    shadowColor: string;
-    shadowOffset: { height: number; width: number };
-    shadowOpacity: number;
-    shadowRadius: number;
-    elevation: number;
-  } {
+  shadowColor: string;
+  shadowOffset: { height: number; width: number };
+  shadowOpacity: number;
+  shadowRadius: number;
+  elevation: number;
+} {
   return {
     shadowColor: color,
     shadowOffset: offset,

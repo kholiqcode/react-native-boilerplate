@@ -1,4 +1,4 @@
-package com.boilerplate.newarchitecture.components;
+package com.finetiks.rnboilerplate.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

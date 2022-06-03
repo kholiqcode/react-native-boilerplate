@@ -1,9 +1,16 @@
 import React, { forwardRef } from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, TextInputProps, View } from 'react-native';
 import { BaseColor, BaseStyle, useTheme } from '../../../theme';
 import { styles } from './styles';
 
-const Index = forwardRef((props: TextInput.IProps, ref: any) => {
+interface ITextInputProps extends TextInputProps {
+  success?: boolean;
+  icon?: any;
+  inputStyle?: any;
+  onPress?: any;
+}
+
+const Index = forwardRef((props: ITextInputProps, ref: any) => {
   const { colors } = useTheme();
   const cardColor = colors.card;
   const {

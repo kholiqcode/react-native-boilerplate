@@ -28,10 +28,10 @@ export const fetcher = <T>({
 
 export const useLoadMore = <T>(url: string | null, params?: object) => {
   const context = useInfiniteQuery<
-  GetInfinitePagesInterface<T>,
-  Error,
-  GetInfinitePagesInterface<T>,
-  QueryKeyT
+    GetInfinitePagesInterface<T>,
+    Error,
+    GetInfinitePagesInterface<T>,
+    QueryKeyT
   >(
     [url!, params],
     ({ queryKey, pageParam = 1, meta }: any) => fetcher({ queryKey, pageParam, meta }),
