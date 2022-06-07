@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useColorScheme } from 'react-native';
 import { DefaultTheme, ThemeSupport } from './pallete';
 import { DefaultFont } from './font';
+import { useReduxSelector } from '../redux';
 
 /**
  * export theme and colors for application
@@ -9,8 +10,8 @@ import { DefaultFont } from './font';
  */
 export const useTheme = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const forceDark = useSelector((state: any) => state.application.force_dark);
-  const themeStorage = useSelector((state: any) => state.application.theme);
+  const forceDark = useReduxSelector((state) => state.application.force_dark);
+  const themeStorage = useReduxSelector((state) => state.application.theme);
   const listTheme = ThemeSupport.filter((item) => item.theme == themeStorage);
   const theme = listTheme.length > 0 ? listTheme[0] : DefaultTheme;
 

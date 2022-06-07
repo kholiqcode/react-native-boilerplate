@@ -30,8 +30,10 @@ const initialState: InitialState.IState = {
   },
 };
 
+const reducerName = 'user';
+
 const slice = createSlice({
-  name: 'user',
+  name: reducerName,
   initialState,
   reducers: {
     // START LOADING
@@ -54,7 +56,7 @@ const slice = createSlice({
 });
 
 // Reducer
-export default slice.reducer;
+export const usersSliceReducer = { [reducerName]: slice.reducer };
 
 // Actions
 export const { startLoading, hasError, onGetUsersSuccess } = slice.actions;

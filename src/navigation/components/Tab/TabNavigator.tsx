@@ -1,7 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTranslation } from 'react-i18next';
-import { BaseColor, BaseStyle, useTheme } from '../../../theme';
+import { BaseStyle } from '../../../theme';
+import { useTheme } from 'native-base';
 
 const BottomTab: any = createBottomTabNavigator();
 
@@ -19,7 +20,7 @@ export function BottomTabNavigator({
         showIcon: true,
         showLabel: true,
         activeTintColor: colors.primary,
-        inactiveTintColor: BaseColor.grayColor,
+        inactiveTintColor: colors.gray,
         style: BaseStyle.tabBar,
         labelStyle: {
           fontSize: 12,

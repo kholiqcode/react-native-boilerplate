@@ -1,14 +1,14 @@
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import i18n from 'i18next';
+import { useColorMode } from 'native-base';
 import React, { useEffect, useRef } from 'react';
 import { initReactI18next } from 'react-i18next';
-import { Platform, StatusBar, useColorScheme, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { Platform, StatusBar, View } from 'react-native';
 import { BaseSetting } from '../config';
 import { useLayout } from '../hooks';
-import { onChangeLanguage } from '../redux';
-import { useTheme } from '../theme';
+import { useReduxDispatch, useReduxSelector } from '../redux';
+import { onChangeLanguage } from '../redux/modules/application';
 import { AllScreens, ModalScreens } from './config';
 
 const RootStack = createStackNavigator();
@@ -36,12 +36,12 @@ function MainScreens() {
  */
 function Navigator() {
   // HOOKS
-  const { theme } = useTheme();
-  const dispatch = useDispatch();
-  const isDarkMode = useColorScheme() === 'dark';
+  const { colorMode } = useColorMode();
+  const dispatch = useReduxDispatch();
+  const isDarkMode = colorMode === 'dark';
   const { enableExperimental } = useLayout();
   const navigationRef: any = useRef(null);
-  const { language } = useSelector((state: any) => state.application);
+  const { language } = useReduxSelector((state) => state.application);
 
   // EFFECTS
   useEffect(() => {
@@ -81,12 +81,12 @@ function Navigator() {
     <View
       style={{
         flex: 1,
-        position: 'relative',
       }}
     >
-      <NavigationContainer theme={theme} ref={navigationRef}>
+      <NavigationContainer ref={navigationRef}>
         <RootStack.Navigator
           screenOptions={{
+            gestureEnabled: false,
             headerShown: false,
             cardStyle: { backgroundColor: 'transparent' },
             cardOverlayEnabled: true,

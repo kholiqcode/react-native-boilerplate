@@ -8,6 +8,8 @@ import { persistor, store, queryClient } from './redux';
 import Navigator from './navigation';
 import { useLayout } from './hooks';
 import 'react-native-gesture-handler';
+import { NativeBaseProvider } from 'native-base';
+import themes from './themeNativeBase';
 
 useLayout().setupLayoutAnimation();
 LogBox.ignoreAllLogs();
@@ -18,7 +20,9 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <SafeAreaProvider>
-            <Navigator />
+            <NativeBaseProvider theme={themes}>
+              <Navigator />
+            </NativeBaseProvider>
           </SafeAreaProvider>
         </PersistGate>
       </Provider>

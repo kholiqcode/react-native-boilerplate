@@ -5,5 +5,3 @@ import Button from './Button';
 import Icon from './Icon';
 
 export { Text, Image, TextInput, Button, Icon };
-
-export { SafeAreaView } from 'react-native-safe-area-context';
