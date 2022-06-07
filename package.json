@@ -4,6 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:run": "ENVFILE=.env.development react-native run-android",
+    "android:run:local": "adb reverse tcp:5001 tcp:5001 && ENVFILE=.env.local react-native run-android",
+    "android:run:demo": "ENVFILE=.env.demo react-native run-android",
+    "android:run:staging": "ENVFILE=.env.staging react-native run-android",
+    "android:run:release": "ENVFILE=.env.production react-native run-android --variant=release",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "release": "standard-version",
