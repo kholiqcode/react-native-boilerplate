@@ -1,0 +1,21 @@
+{
+  "presets": ["module:metro-react-native-babel-preset"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": [
+          {
+            "@components-atoms/*": "./src/components/atoms"
+          },
+          {
+            "@components-molecules/*": "./src/components/molecules"
+          }
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "react-native-reanimated/plugin"
+  ]
+}
