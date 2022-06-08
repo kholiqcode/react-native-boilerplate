@@ -2,7 +2,8 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers } from 'redux';
-import { applicationReducer, productsReducer, userReducer } from './modules';
+import { productsQueryReducer, userQueryReducer } from '../services';
+import { applicationReducer, usersSliceReducer } from './modules';
 
 // ----------------------------------------------------------------------
 
@@ -23,8 +24,9 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
   application: applicationReducer,
-  ...userReducer,
-  ...productsReducer,
+  ...usersSliceReducer,
+  ...userQueryReducer,
+  ...productsQueryReducer,
 });
 
 export { rootPersistConfig, rootReducer };

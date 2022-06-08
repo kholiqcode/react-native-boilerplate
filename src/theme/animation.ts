@@ -21,7 +21,8 @@ const horizontal = ({ current, layouts }: any) => ({
     ],
   },
 });
-export const Animation = {
+
+export const animation = {
   forFade,
   horizontal,
   bottomToUp: CardStyleInterpolators.forRevealFromBottomAndroid,

@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { QueryClient } from 'react-query';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import logger from 'redux-logger';
 import {
@@ -13,7 +12,7 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import ReactotronConfig from '../../ReactotronConfig';
-import { combinedMiddleware } from './modules';
+import { combinedMiddleware } from '../services';
 import { rootPersistConfig, rootReducer } from './rootReducer';
 
 /**
@@ -21,7 +20,7 @@ import { rootPersistConfig, rootReducer } from './rootReducer';
  */
 
 const store = configureStore({
-  reducer: persistReducer<any, any>(rootPersistConfig, rootReducer),
+  reducer: persistReducer(rootPersistConfig, rootReducer),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -46,15 +45,7 @@ const useReduxSelector: TypedUseSelectorHook<RootState> = useSelector;
 /**
  * Initial Redux Query
  */
-const queryClient = new QueryClient();
 
-export {
-  store,
-  persistor,
-  useSelector,
-  useDispatch,
-  queryClient,
-  useReduxDispatch,
-  useReduxSelector,
-};
-export * from './modules';
+export { store, persistor, useSelector, useDispatch, useReduxDispatch, useReduxSelector };
+
+// export * from './modules';

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Box, ScrollView, Text } from 'native-base';
 import { ProductsCard } from '../../molecules';
-import { useGetProductQuery } from '../../../redux/modules/products';
+import { useGetProductQuery } from '../../../services/products';
 
-const ProductsSection = ({ query }: { query: string }) => {
+type IProductsSectionProps = {
+  query: string;
+};
+
+export default function ProductsSection({ query }: IProductsSectionProps) {
   const [filteredSearchQuery, setFilteredSearchQuery] = useState(query);
   const { data: dataProducts, isFetching } = useGetProductQuery(filteredSearchQuery);
 
   useEffect(() => {
     if (query.length === 0 || query.length > 4) {
-      console.log('THIS: ', query);
       setFilteredSearchQuery(query);
     }
   }, [query]);
@@ -22,10 +25,9 @@ const ProductsSection = ({ query }: { query: string }) => {
         </Text>
       ) : dataProducts?.products?.length > 0 ? (
         <ScrollView flex={1} p={'4'}>
-          {dataProducts?.products?.length > 0 &&
-            dataProducts?.products?.map((v: any) => (
-              <ProductsCard desc={v.description} name={v.title} image={v.images[0]} key={v.id} />
-            ))}
+          {dataProducts?.products?.map((v: any) => (
+            <ProductsCard desc={v.description} name={v.title} image={v.images[0]} key={v.id} />
+          ))}
         </ScrollView>
       ) : (
         <Text justifyItems={'center'} alignSelf={'center'}>
@@ -34,6 +36,4 @@ const ProductsSection = ({ query }: { query: string }) => {
       )}
     </Box>
   );
-};
-
-export default ProductsSection;
+}

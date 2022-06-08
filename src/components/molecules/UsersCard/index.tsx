@@ -2,15 +2,14 @@ import React from 'react';
 import { Text, Box, Image, Pressable, HStack } from 'native-base';
 import { heightPercentageToDP } from '../../../utils/normalize';
 
-interface IUsersCardProps {
+type IUsersCardProps = {
   image: string;
   name: string;
   desc: string;
   onPress?: () => void;
-}
+};
 
-const UsersCard = (props: IUsersCardProps) => {
-  const { desc, image, name, onPress } = props;
+export default function UsersCard({ desc, image, name, onPress }: IUsersCardProps) {
   const heightBox = heightPercentageToDP('10');
   return (
     <Pressable onPress={onPress} borderWidth="1" mb={'4'} borderRadius={'xl'}>
@@ -35,6 +34,4 @@ const UsersCard = (props: IUsersCardProps) => {
       </Box>
     </Pressable>
   );
-};
-
-export default UsersCard;
+}

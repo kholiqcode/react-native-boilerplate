@@ -1,12 +1,9 @@
 import { StyleSheet } from 'react-native';
-import { BaseStyle } from '../../theme';
 
 export const styles = StyleSheet.create<Splash.IStyleSheet>({
-  imageRotate: [
-    BaseStyle.safeAreaView,
-    {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  ],
+  imageRotate: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

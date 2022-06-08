@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Heading, Input, ScrollView, Text } from 'native-base';
-import { useGetUserListQuery } from '../../redux/modules/user';
+import { useGetUserListQuery } from '../../services/user';
 import { UsersCard, ProductsSection } from '../../components';
 import { useDebounce } from '../../hooks';
 
@@ -17,10 +17,9 @@ const Home: React.FC = () => {
         {isLoadingUser && <Text>Loading</Text>}
         {dataUser && (
           <ScrollView flex={1} p={'4'}>
-            {dataUser?.users?.length > 0 &&
-              dataUser?.users?.map((v: any) => (
-                <UsersCard desc={v.lastName} name={v.firstName} image={v.image} key={v.id} />
-              ))}
+            {dataUser?.users?.map((v: any) => (
+              <UsersCard desc={v.lastName} name={v.firstName} image={v.image} key={v.id} />
+            ))}
           </ScrollView>
         )}
       </Box>

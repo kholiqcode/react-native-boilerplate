@@ -1,3 +1,3 @@
-import ProductsSection from './PrroductsSection';
+import ProductsSection from './ProductsSection';
 
 export { ProductsSection };

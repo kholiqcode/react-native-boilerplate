@@ -8,8 +8,9 @@ import {
   KeyboardAvoidingView,
   Text,
   useTheme,
+  WarningIcon,
+  WarningTwoIcon,
 } from 'native-base';
-import { Icon } from '../../components';
 import { useSignIn } from './hook';
 
 export default React.memo(function SignIn(): JSX.Element {
@@ -33,12 +34,11 @@ export default React.memo(function SignIn(): JSX.Element {
               <IconButton
                 onPress={onToggleHidePassword}
                 icon={
-                  <Icon
-                    name={hidePassword ? 'eye' : 'eye-slash'}
-                    color={colors.black}
-                    size={20}
-                    enableRTL
-                  />
+                  hidePassword ? (
+                    <WarningIcon name={'warning-1'} color={colors.black} size={6} />
+                  ) : (
+                    <WarningTwoIcon name={'warning-2'} color={colors.black} size={6} />
+                  )
                 }
               />
             }
