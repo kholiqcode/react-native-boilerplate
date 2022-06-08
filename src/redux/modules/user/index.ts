@@ -37,18 +37,18 @@ const slice = createSlice({
   initialState,
   reducers: {
     // START LOADING
-    startLoading(state: any) {
+    startLoading(state: InitialState.IState) {
       state.isLoading = true;
     },
 
     // HAS ERROR
-    hasError(state: any, action: any) {
+    hasError(state: InitialState.IState, action: InitialState.IAction) {
       state.isLoading = false;
       state.error = action.payload;
     },
 
     // ON GET USERS SUCCESS
-    onGetUsersSuccess(state: any, action: any) {
+    onGetUsersSuccess(state: InitialState.IState, action: InitialState.IAction) {
       state.isLoading = false;
       state.users = action?.payload;
     },

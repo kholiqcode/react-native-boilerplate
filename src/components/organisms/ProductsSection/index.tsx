@@ -25,9 +25,16 @@ export default function ProductsSection({ query }: IProductsSectionProps) {
         </Text>
       ) : dataProducts?.products?.length > 0 ? (
         <ScrollView flex={1} p={'4'}>
-          {dataProducts?.products?.map((v: any) => (
-            <ProductsCard desc={v.description} name={v.title} image={v.images[0]} key={v.id} />
-          ))}
+          {dataProducts?.products?.map(
+            (v: {
+              description: string;
+              title: string;
+              images: string[];
+              id: React.Key | null | undefined;
+            }) => (
+              <ProductsCard desc={v.description} name={v.title} image={v.images[0]} key={v.id} />
+            ),
+          )}
         </ScrollView>
       ) : (
         <Text justifyItems={'center'} alignSelf={'center'}>
