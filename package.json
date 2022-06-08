@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "android": "react-native run-android",
     "android:run": "ENVFILE=.env.development react-native run-android",
     "android:run:local": "adb reverse tcp:5001 tcp:5001 && ENVFILE=.env.local react-native run-android",
@@ -20,8 +21,7 @@
     "lint:fix": "eslint --ext .tsx --ext .ts src/ --fix",
     "format": "prettier --check ./src",
     "format:fix": "prettier --write ./src",
-    "husky-install": "husky install",
-    "lint-staged": "lint-staged"
+    "typescript": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "@jest/globals": "^28.1.0",
@@ -60,6 +60,8 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/runtime": "^7.12.5",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
     "@jest/types": "^28.1.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.24",
@@ -79,7 +81,6 @@
     "eslint-plugin-jest-dom": "^4.0.2",
     "husky": "^8.0.1",
     "jest": "^27.0.0",
-    "lint-staged": "^12.4.2",
     "metro-react-native-babel-preset": "^0.67.0",
     "prettier": "^2.6.2",
     "react-native-svg-transformer": "^1.0.0",
@@ -92,20 +93,6 @@
   },
   "resolutions": {
     "@types/react": "^17"
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "eslint --ext .tsx --ext .ts src/ --fix"
-    ],
-    "./src/**": [
-      "prettier --write ."
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && yarn test",
-      "pre-push": "yarn verify"
-    }
   },
   "engines": {
     "node": ">=14",
