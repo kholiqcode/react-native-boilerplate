@@ -6,7 +6,7 @@ import { useDebounce } from '../../hooks';
 
 const Home: React.FC = () => {
   const [selectedData, setSelectedData] = useState<'users' | 'products'>('users');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   const UserSection = () => {
@@ -60,11 +60,7 @@ const Home: React.FC = () => {
         </Button>
       </Button.Group>
       {selectedData == 'products' && (
-        <Input
-          value={searchQuery}
-          onChangeText={(e) => setSearchQuery(e)}
-          _focus={{ bgColor: undefined }}
-        />
+        <Input value={searchQuery} onChangeText={(e) => setSearchQuery(e)} />
       )}
       <Box flex={1}>
         {selectedData == 'users' ? (

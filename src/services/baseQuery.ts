@@ -1,8 +1,8 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import Config from 'react-native-config';
+import { BASE_API_URL } from 'react-native-dotenv';
 
 export const functionsBaseQuery = () =>
   fetchBaseQuery({
-    baseUrl: Config.BASE_API_URL,
+    baseUrl: BASE_API_URL,
     // replace this into base url backend
   });

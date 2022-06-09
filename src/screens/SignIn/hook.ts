@@ -3,12 +3,15 @@ import { useState } from 'react';
 import { Platform } from 'react-native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type Props = NativeStackNavigationProp<ReactNavigation.SignInStackParamList, 'SignInScreen'>;
+type NavigationProp = NativeStackNavigationProp<
+  ReactNavigation.SignInStackParamList,
+  'SignInScreen'
+>;
 
 export const useSignIn = () => {
   // STATE
   const [hidePassword, setHidePassword] = useState<boolean>(true);
-  const navigation = useNavigation<Props>();
+  const navigation = useNavigation<NavigationProp>();
   const offsetKeyboard = Platform.select({
     ios: 0,
     android: 30,

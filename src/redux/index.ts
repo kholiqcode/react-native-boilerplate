@@ -11,7 +11,6 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import ReactotronConfig from '../../ReactotronConfig';
 import { combinedMiddleware } from '../services';
 import { rootPersistConfig, rootReducer } from './rootReducer';
 
@@ -29,7 +28,6 @@ const store = configureStore({
     })
       .concat(combinedMiddleware)
       .concat(logger),
-  enhancers: [ReactotronConfig.createEnhancer!()],
 });
 
 const persistor = persistStore(store);

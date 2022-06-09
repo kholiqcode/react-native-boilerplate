@@ -25,6 +25,3 @@
 
 # Setup For React Native SVG
 -keep public class com.horcrux.svg.** {*;}
-
-# Setup For React Native Config
--keep class     com.finetiks.rnboilerplate.BuildConfig { *; }

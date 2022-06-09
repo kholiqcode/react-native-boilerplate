@@ -3,7 +3,7 @@ module.exports = {
   plugins: ['import', 'prettier'],
   extends: ['airbnb-typescript/base', 'prettier'],
   parserOptions: {
-    project: './tsconfig.eslint.json',
+    project: './tsconfig.json',
   },
   settings: {
     'import/resolver': {
@@ -13,6 +13,10 @@ module.exports = {
     },
   },
   rules: {
+    'no-console': 2,
+    'no-unused-vars': 2,
+    'no-param-reassign': 2,
+    'no-restricted-imports': 2,
     'prettier/prettier': [
       'error',
       {
