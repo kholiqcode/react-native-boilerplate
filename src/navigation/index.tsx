@@ -69,7 +69,7 @@ function HomeTabNavigator() {
   );
 }
 
-const SpashStack = createNativeStackNavigator<ReactNavigation.SplashScreenParamList>();
+const SpashStack = createNativeStackNavigator();
 function SplashNavigator() {
   return (
     <SpashStack.Navigator initialRouteName="SplashScreen">

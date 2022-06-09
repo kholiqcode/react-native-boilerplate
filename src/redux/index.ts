@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import logger from 'redux-logger';
@@ -18,6 +20,13 @@ import { rootPersistConfig, rootReducer } from './rootReducer';
  * Setup redux store
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let createDebugger: (() => any) | null = null;
+
+if (__DEV__) {
+  createDebugger = require('redux-flipper').default;
+}
+
 const store = configureStore({
   reducer: persistReducer(rootPersistConfig, rootReducer),
   middleware: (getDefaultMiddleware) =>
@@ -27,6 +36,8 @@ const store = configureStore({
       },
     })
       .concat(combinedMiddleware)
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      .concat(createDebugger!())
       .concat(logger),
 });
 

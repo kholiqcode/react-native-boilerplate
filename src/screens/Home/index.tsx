@@ -1,37 +1,12 @@
 import React, { useState } from 'react';
-import { Box, Button, Heading, Input, ScrollView, Text } from 'native-base';
-import { useGetUserListQuery } from '../../services/user';
-import { UsersCard, ProductsSection } from '../../components';
+import { Box, Button, Heading, Input } from 'native-base';
+import { ProductsSection, UserSection } from '../../components';
 import { useDebounce } from '../../hooks';
 
 const Home: React.FC = () => {
   const [selectedData, setSelectedData] = useState<'users' | 'products'>('users');
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
-
-  const UserSection = () => {
-    const { isLoading: isLoadingUser, data: dataUser } = useGetUserListQuery();
-
-    return (
-      <Box flex={1}>
-        {isLoadingUser && <Text>Loading</Text>}
-        {dataUser && (
-          <ScrollView flex={1} p={'4'}>
-            {dataUser?.users?.map(
-              (v: {
-                lastName: string;
-                firstName: string;
-                image: string;
-                id: React.Key | null | undefined;
-              }) => (
-                <UsersCard desc={v.lastName} name={v.firstName} image={v.image} key={v.id} />
-              ),
-            )}
-          </ScrollView>
-        )}
-      </Box>
-    );
-  };
 
   return (
     <Box flex={1} safeAreaTop>

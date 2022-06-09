@@ -7,7 +7,7 @@ export function navigate(
   params?: NavigatorScreenParams<ReactNavigation.RootParamList>['params'],
 ) {
   if (navigationRef.isReady() && navigationRef.current) {
-    navigationRef.current.navigate(name, params!);
+    navigationRef.current.navigate(name, params);
   }
 }
 

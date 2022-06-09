@@ -1,3 +1,4 @@
 import ProductsSection from './ProductsSection';
+import UserSection from './UserSection';
 
-export { ProductsSection };
+export { ProductsSection, UserSection };

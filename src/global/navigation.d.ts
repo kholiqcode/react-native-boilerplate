@@ -19,10 +19,6 @@ declare global {
       HomeTabNavigator: HomeTabParamList | undefined;
     };
 
-    export type SplashScreenParamList = {
-      SplashScreen: undefined;
-    };
-
     export type HomeStackParamList = {
       HomeScreen: undefined;
     };
@@ -35,5 +31,11 @@ declare global {
       HomeStackNavigator: HomeStackParamList | undefined;
       SettingStackNavigator: SettingStackParamList | undefined;
     };
+
+    interface RootParamList
+      extends SignInStackParamList,
+        HomeStackParamList,
+        SettingStackParamList,
+        HomeTabParamList {}
   }
 }

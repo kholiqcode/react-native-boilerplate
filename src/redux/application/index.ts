@@ -1,7 +1,7 @@
 /**
  * IMPORTS
  */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 /**
  * SLICE USER
@@ -14,12 +14,13 @@ const initialState: ApplicationSlice.IState = {
   intro: true,
 };
 
+const reducerName = 'application';
 const slice = createSlice({
-  name: 'application',
+  name: reducerName,
   initialState,
   reducers: {
     // SET INTRO
-    setIntro(state: ApplicationSlice.IState, action: ApplicationSlice.IAction) {
+    setIntro(state: ApplicationSlice.IState, action: PayloadAction<boolean>) {
       state.intro = action?.payload;
     },
 
@@ -46,7 +47,7 @@ const slice = createSlice({
 });
 
 // Reducer
-export default slice.reducer;
+export const applicationReducer = { [reducerName]: slice.reducer };
 
 // Actions
 export const { setIntro, onChangeTheme, onForceTheme, onChangeFont, onChangeLanguage } =

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CardStyleInterpolators } from '@react-navigation/stack';
 
 const forFade = ({ current }: any) => ({

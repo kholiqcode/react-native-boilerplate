@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, ScrollView, Text } from 'native-base';
 import { ProductsCard } from '../../molecules';
-import { useGetProductQuery } from '../../../services/products';
+import { IProductsDetail, useGetProductQuery } from '../../../services/products';
 
 type IProductsSectionProps = {
   query: string;
@@ -9,7 +9,7 @@ type IProductsSectionProps = {
 
 export default function ProductsSection({ query }: IProductsSectionProps) {
   const [filteredSearchQuery, setFilteredSearchQuery] = useState(query);
-  const { data: dataProducts, isFetching } = useGetProductQuery(filteredSearchQuery);
+  const { data, isFetching } = useGetProductQuery(filteredSearchQuery);
 
   useEffect(() => {
     if (query.length === 0 || query.length > 4) {
@@ -23,18 +23,11 @@ export default function ProductsSection({ query }: IProductsSectionProps) {
         <Text justifyItems={'center'} alignSelf="center">
           Loading
         </Text>
-      ) : dataProducts?.products?.length > 0 ? (
+      ) : data && data?.products.length > 0 ? (
         <ScrollView flex={1} p={'4'}>
-          {dataProducts?.products?.map(
-            (v: {
-              description: string;
-              title: string;
-              images: string[];
-              id: React.Key | null | undefined;
-            }) => (
-              <ProductsCard desc={v.description} name={v.title} image={v.images[0]} key={v.id} />
-            ),
-          )}
+          {data?.products?.map((v: IProductsDetail) => (
+            <ProductsCard desc={v.description} name={v.title} image={v.images[0]} key={v.id} />
+          ))}
         </ScrollView>
       ) : (
         <Text justifyItems={'center'} alignSelf={'center'}>
