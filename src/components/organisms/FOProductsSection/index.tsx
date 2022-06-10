@@ -3,11 +3,11 @@ import { Box, ScrollView, Text } from 'native-base';
 import { ProductsCard } from '../../molecules';
 import { IProductsDetail, useGetProductQuery } from '../../../services/products';
 
-type IProductsSectionProps = {
+type IFOProductsSectionProps = {
   query: string;
 };
 
-export default function ProductsSection({ query }: IProductsSectionProps) {
+export default function FOProductsSection({ query }: IFOProductsSectionProps) {
   const [filteredSearchQuery, setFilteredSearchQuery] = useState(query);
   const { data, isFetching } = useGetProductQuery(filteredSearchQuery);
 

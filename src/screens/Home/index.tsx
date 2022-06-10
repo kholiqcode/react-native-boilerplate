@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Button, Heading, Input } from 'native-base';
-import { ProductsSection, UserSection } from '../../components';
+import { FOProductsSection, FOUserSection } from '../../components';
 import { useDebounce } from '../../hooks';
 
-const Home: React.FC = () => {
+export default function Home(): JSX.Element {
   const [selectedData, setSelectedData] = useState<'users' | 'products'>('users');
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearchQuery = useDebounce(searchQuery, 500);
@@ -39,13 +39,11 @@ const Home: React.FC = () => {
       )}
       <Box flex={1}>
         {selectedData == 'users' ? (
-          <UserSection />
+          <FOUserSection />
         ) : (
-          <ProductsSection query={debouncedSearchQuery} />
+          <FOProductsSection query={debouncedSearchQuery} />
         )}
       </Box>
     </Box>
   );
-};
-
-export default Home;
+}

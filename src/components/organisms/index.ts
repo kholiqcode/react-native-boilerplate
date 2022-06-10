@@ -1,4 +1,4 @@
-import ProductsSection from './ProductsSection';
-import UserSection from './UserSection';
+import FOProductsSection from './FOProductsSection';
+import FOUserSection from './FOUserSection';
 
-export { ProductsSection, UserSection };
+export { FOProductsSection, FOUserSection };

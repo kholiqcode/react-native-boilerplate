@@ -13,7 +13,7 @@ import {
 } from 'native-base';
 import { useSignIn } from './hook';
 
-export default React.memo(function SignIn(): JSX.Element {
+export default function SignIn(): JSX.Element {
   const { hidePassword, offsetKeyboard, onToggleHidePassword, goToHome } = useSignIn();
   const { colors } = useTheme();
 
@@ -50,4 +50,4 @@ export default React.memo(function SignIn(): JSX.Element {
       </KeyboardAvoidingView>
     </Box>
   );
-});
+}

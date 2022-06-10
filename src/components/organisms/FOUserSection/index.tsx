@@ -3,7 +3,7 @@ import { Box, ScrollView, Text } from 'native-base';
 import { useGetUserListQuery } from '../../../services';
 import { UsersCard } from '../../molecules';
 
-export default function UserSection(): JSX.Element {
+export default function FOUserSection(): JSX.Element {
   const { isFetching, data: data } = useGetUserListQuery();
 
   return (
