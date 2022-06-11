@@ -1,5 +1,5 @@
 declare namespace Splash {
   export interface IStyleSheet {
-    imageRotate: Object;
+    imageRotate: Record<string, unknown>;
   }
 }

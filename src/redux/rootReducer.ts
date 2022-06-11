@@ -2,30 +2,32 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+import { productsQueryReducer, userQueryReducer } from '../services';
+import { applicationReducer } from './application';
+import { usersSliceReducer } from './user';
 
 // ----------------------------------------------------------------------
-import { applicationReducer, userReducer } from './slices';
 
 const rootPersistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  keyPrefix: 'redux-',
+  // keyPrefix: 'redux-',
   whitelist: [],
-  stateReconciler: autoMergeLevel2,
+  // stateReconciler: autoMergeLevel2,
 };
 
-const userPersistConfig = {
-  key: 'user',
-  storage: AsyncStorage,
-  keyPrefix: 'redux-',
-  whitelist: ['isAuthenticated', 'user', 'token'],
-};
+// const userPersistConfig = {
+//   key: 'user',
+//   storage: AsyncStorage,
+//   keyPrefix: 'redux-',
+//   whitelist: ['isAuthenticated', 'user', 'token'],
+// };
 
 const rootReducer = combineReducers({
-  application: applicationReducer,
-  user: persistReducer(userPersistConfig, userReducer),
+  ...applicationReducer,
+  ...usersSliceReducer,
+  ...userQueryReducer,
+  ...productsQueryReducer,
 });
 
 export { rootPersistConfig, rootReducer };

@@ -1,28 +1,60 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { configureStore } from '@reduxjs/toolkit';
-import { QueryClient } from 'react-query';
-import { useDispatch as useReduxDispatch, useSelector as useReduxSelector } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import logger from 'redux-logger';
-import { persistReducer, persistStore } from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
+import { combinedMiddleware } from '../services';
 import { rootPersistConfig, rootReducer } from './rootReducer';
 
 /**
  * Setup redux store
  */
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let createDebugger: (() => any) | null = null;
+
+if (__DEV__) {
+  createDebugger = require('redux-flipper').default;
+}
+
 const store = configureStore({
-  reducer: persistReducer<any, any>(rootPersistConfig, rootReducer),
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  reducer: persistReducer(rootPersistConfig, rootReducer),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    })
+      .concat(combinedMiddleware)
+      /* eslint-disable @typescript-eslint/no-non-null-assertion */
+      .concat(createDebugger!())
+      .concat(logger),
 });
 
 const persistor = persistStore(store);
 
-const useSelector = useReduxSelector;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+type RootState = ReturnType<typeof rootReducer>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+type AppDispatch = typeof store.dispatch;
 
-const useDispatch = () => useReduxDispatch();
+const useReduxDispatch = () => useDispatch<AppDispatch>();
+const useReduxSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 /**
  * Initial Redux Query
  */
-const queryClient = new QueryClient();
 
-export { store, persistor, useSelector, useDispatch, queryClient };
-export * from './slices';
+export { store, persistor, useSelector, useDispatch, useReduxDispatch, useReduxSelector };
+
+// export * from './modules';

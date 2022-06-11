@@ -1,124 +1,107 @@
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import i18n from 'i18next';
-import React, { useEffect, useRef } from 'react';
-import { initReactI18next } from 'react-i18next';
-import { Platform, StatusBar, useColorScheme, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { BaseSetting } from '../config';
-import { useLayout } from '../hooks';
-import { onChangeLanguage } from '../redux';
-import { useTheme } from '../theme';
-import { AllScreens, ModalScreens } from './config';
+import React, { useEffect, useState } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useTheme, AddIcon } from 'native-base';
+import { Home, Setting, SignIn, Splash } from '../screens';
+import { NavigationContainer } from '@react-navigation/native';
 
-const RootStack = createStackNavigator();
-const MainStack = createStackNavigator();
-
-function MainScreens() {
+const SignInStack = createNativeStackNavigator<ReactNavigation.SignInStackParamList>();
+function SignInStackNavigator() {
   return (
-    <MainStack.Navigator
-      initialRouteName={BaseSetting.firstScreen}
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      {Object.keys(AllScreens).map((name) => {
-        const { component, options } = AllScreens[name];
-        return <MainStack.Screen key={name} name={name} component={component} options={options} />;
-      })}
-    </MainStack.Navigator>
+    <SignInStack.Navigator initialRouteName="SignInScreen" screenOptions={{ headerShown: false }}>
+      <SignInStack.Screen name="SignInScreen" component={SignIn} />
+      <SignInStack.Screen
+        name="HomeTabNavigator"
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        component={HomeTabNavigator}
+      />
+    </SignInStack.Navigator>
   );
 }
 
-/**
- * Navigators allow you to define your application's navigation structure.
- * Navigators also render common elements such as headers and tab bars which you can configure.
- */
-function Navigator() {
-  // HOOKS
-  const { theme } = useTheme();
-  const dispatch = useDispatch();
-  const isDarkMode = useColorScheme() === 'dark';
-  const { enableExperimental } = useLayout();
-  const navigationRef: any = useRef(null);
-  const { language } = useSelector((state: any) => state.application);
+const SettingStack = createNativeStackNavigator<ReactNavigation.SettingStackParamList>();
+function SettingStackNavigator() {
+  return (
+    <SettingStack.Navigator initialRouteName="SettingScreen" screenOptions={{ headerShown: false }}>
+      <SettingStack.Screen name="SettingScreen" component={Setting} />
+    </SettingStack.Navigator>
+  );
+}
 
-  // EFFECTS
-  useEffect(() => {
-    // Config status bar
-    if (Platform.OS == 'android') {
-      StatusBar.setBackgroundColor(isDarkMode ? 'black' : 'white', true);
-    }
-    StatusBar.setBarStyle(isDarkMode ? 'light-content' : 'dark-content', true);
-  }, [isDarkMode]);
+const HomeTab = createBottomTabNavigator<ReactNavigation.HomeTabParamList>();
+function HomeTabNavigator() {
+  const theme = useTheme();
+  const { colors } = theme;
+
+  return (
+    <HomeTab.Navigator
+      initialRouteName="HomeStackNavigator"
+      screenOptions={{
+        tabBarActiveTintColor: colors.lightBlue[100],
+        tabBarInactiveTintColor: colors.gray[400],
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          borderRadius: 10,
+        },
+      }}
+    >
+      <HomeTab.Screen
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <AddIcon color={focused ? colors.blue[700] : colors.coolGray[900]} size={'3xl'} />
+          ),
+        }}
+        name="HomeStackNavigator"
+        component={Home}
+      />
+      <HomeTab.Screen
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <AddIcon color={focused ? colors.blue[700] : colors.coolGray[900]} size={'3xl'} />
+          ),
+        }}
+        name="SettingStackNavigator"
+        component={SettingStackNavigator}
+      />
+    </HomeTab.Navigator>
+  );
+}
+
+const SpashStack = createNativeStackNavigator();
+function SplashNavigator() {
+  return (
+    <SpashStack.Navigator initialRouteName="SplashScreen">
+      <SpashStack.Screen
+        name="SplashScreen"
+        component={Splash}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </SpashStack.Navigator>
+  );
+}
+
+function Router() {
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Startup Process
-    const onProcess = async () => {
-      setTimeout(() => {
-        navigationRef?.current?.dispatch(StackActions.replace('SignIn'));
-      }, 2000);
-      // Get current language of device
-      const languageCode = language ?? BaseSetting.defaultLanguage;
-      dispatch(onChangeLanguage(language));
-      // Config language for app
-      await i18n.use(initReactI18next).init({
-        compatibilityJSON: 'v3',
-        lng: languageCode,
-        resources: BaseSetting.resourcesLanguage,
-        fallbackLng: BaseSetting.defaultLanguage,
-      });
-      enableExperimental();
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
     };
-    onProcess();
   }, []);
 
-  /**
-   * HANDLER
-   */
-
   return (
-    <View
-      style={{
-        flex: 1,
-        position: 'relative',
-      }}
-    >
-      <NavigationContainer theme={theme} ref={navigationRef}>
-        <RootStack.Navigator
-          screenOptions={{
-            headerShown: false,
-            cardStyle: { backgroundColor: 'transparent' },
-            cardOverlayEnabled: true,
-            cardStyleInterpolator: ({ current: { progress } }) => ({
-              cardStyle: {
-                opacity: progress.interpolate({
-                  inputRange: [0, 0.5, 0.9, 1],
-                  outputRange: [0, 0.25, 0.7, 1],
-                }),
-              },
-              overlayStyle: {
-                opacity: progress.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [0, 0.5],
-                  extrapolate: 'clamp',
-                }),
-              },
-            }),
-            presentation: 'modal',
-          }}
-        >
-          <RootStack.Screen name="MainScreens" component={MainScreens} />
-          {Object.keys(ModalScreens).map((name) => {
-            const { component, options } = ModalScreens[name];
-            return (
-              <RootStack.Screen key={name} name={name} component={component} options={options} />
-            );
-          })}
-        </RootStack.Navigator>
-      </NavigationContainer>
-    </View>
+    <NavigationContainer>
+      {loading ? <SplashNavigator /> : <SignInStackNavigator />}
+    </NavigationContainer>
   );
 }
 
-export default Navigator;
+export default Router;

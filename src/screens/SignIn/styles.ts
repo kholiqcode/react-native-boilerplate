@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BaseColor } from '../../theme';
+import colorThemes from '../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textColor: {
-    color: BaseColor.blueColor,
+    color: colorThemes.blue[100],
     alignItems: 'center',
     marginBottom: 50,
   },

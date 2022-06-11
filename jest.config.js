@@ -6,8 +6,11 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   testPathIgnorePatterns: ['\\.snap$', '<rootDir>/node_modules/'],
-  transformIgnorePatterns: ['node_modules/?!(static-container)'],
-  cacheDirectory: '.jest/cache',
+  // transformIgnorePatterns: ['node_modules/?!(static-container)'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(jest-)?@react-native|react-native|react-navigation|react-navigation-redux-helpers|@react-navigation/.*|@react-native-community/.*|native-base)',
+  ],
+  // cacheDirectory: '.jest/cache',
   globals: {
     'ts-jest': {
       isolatedModules: true,
